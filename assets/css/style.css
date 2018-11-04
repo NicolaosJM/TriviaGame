@@ -1,0 +1,31 @@
+body {
+    background-image: url("../images/plaid.png");
+    /* background-size: 45%; */
+    background-repeat: repeat;
+    /* background-position-x: center; */
+    /* background-position-y: 20px; */
+}
+
+.jumbotron {
+    padding-top: 30px;
+    padding-bottom:30px;
+    margin-bottom: 40px;
+    font-family: 'Courier New', Courier, monospace;
+    
+}
+
+.row {
+    margin-top: 30px;
+}
+
+#videoTagHtml {
+    margin-left: 40px;
+}
+
+.card {
+    background-color: #eeeeee;
+    
+}
+
+
+

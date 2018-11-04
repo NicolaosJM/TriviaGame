@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>University Challenge!</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron" style="background-color: rgb(19, 84, 100); margin:0px">
+            <h1 class="display-3 text-center" style="color: lightgray">University Challenge</h1>
+            <p class="lead text-center" style="color: lightgray">watch the question video</p>
+        </div>
+
+        <div class="row">
+            <div class="col-2">
+                <div class="card card-title text-center">
+                    <h5>Time Left: </h4>
+                        <div class="card card-body">
+                            <h3 class="card-title text-center" id="timeLeft" style="color: rgb(19, 84, 100)">30</h3>
+                        </div>
+
+                </div>
+                <br>
+                <button id="startButton" class="align-center">
+                    <h2 style="color: rgb(19, 84, 100)">Start Game!</h2>
+                </button>
+            </div>
+            <div class="col-8">
+                <video controls class="center" id="videoTagHtml">
+                    put a university challenge gif here to placehold before starting quesiton
+                    <source src="" type="video/mp4" id="videoSrcHtml" preload="none">
+                </video>
+            </div>
+            <div class="col-2">
+                <div class="card card-title text-center">
+                    <h5>Correct Answers: </h5>
+                    <div class="card card-body">
+                        <h3 class="card-title text-center" id="rightAnswerNum" style="color: rgb(19, 84, 100)">0</h3>
+                    </div>
+                </div>
+
+                <div class="card card-title text-center">
+                    <h5>Wrong Answers: </h5>
+                    <div class="card card-body">
+                        <h3 class="card-title text-center" id="wrongAnswerNum" style="color: rgb(19, 84, 100)">0</h3>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-2">
+
+                </div>
+                <div class="col-8 justify-content-center">
+                    <div class="card card-body text-center justify-content-center">
+
+                        <h2 id="questionText" style="color: rgb(19, 84, 100)"></h2>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-5">
+                <div class="card card-body">
+                    <h3 class="card-title text-center" id="questionAnswerOption1" style="color: rgb(19, 84, 100)">A</h3>
+                </div>
+                <br>
+                <div class="card card-body">
+                    <h3 class="card-title text-center" id="questionAnswerOption2" style="color: rgb(19, 84, 100)">B</h3>
+                </div>
+                <br>
+            </div>
+            <div class="col-2">
+
+            </div>
+            <div class="col-5">
+                <div class="card card-body">
+                    <h3 class="card-title text-center" id="questionAnswerOption3" style="color: rgb(19, 84, 100)">C</h3>
+                </div>
+                <br>
+                <div class="card card-body">
+                    <h3 class="card-title text-center" id="questionAnswerOption4" style="color: rgb(19, 84, 100)">D</h3>
+                </div>
+                <br>
+            </div>
+
+
+
+        </div>
+
+    </div>
+    </div>
+
+
+    <script type="text/javascript" src="assets/javascript/hw5JStest2.js"></script>
+</body>
+
+</html>
