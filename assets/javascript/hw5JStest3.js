@@ -114,7 +114,7 @@ window.onload = function () {
 
     function timesUp() {
         wrongAnswers++;
-
+        
     };
 
     function checkAnswer() {

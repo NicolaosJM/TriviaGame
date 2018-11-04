@@ -56,8 +56,7 @@ window.onload = function () {
 
     console.log(questionsObject);
 
-    // $("#questionText").html(questionsObject[0].questionText);
-    // document.getElementById("questionText").innerHTML = questionsObject[0].questionText;
+   
 
 
     var logic = {
@@ -66,26 +65,10 @@ window.onload = function () {
         questionNumber: 0,
         correctAnswers: 0,
         wrongAnswers: 0,
-        // answerSubmitted: "",
+        
         timer: 30,
 
 
-        // countdown: function () {
-        //     logic.timer--;
-        //     document.getElementById("timeLeft").innerHTML=logic.timer;
-        //     if (logic.timer < 0) {
-        //         clearInterval(x);
-        //         logic.timesUp();
-        //     }
-        // },
-
-        // questionNumberFunc: function () {
-        //     logic.questionNumber++;
-        //     if (logic.questionNumber >= 9) {
-        //         logic.endGame();
-        //     }
-        //     alert("questionNum called");
-        // },
 
         loadQuestion: function () {
             logic.timer = 30;
@@ -104,19 +87,17 @@ window.onload = function () {
                 logic.endGame();
                 return;
             } else {
-            // console.log(questionsObject[logic.questionNumber].questionVideo);
-            $("#videoSrcHtml").attr("src", questionsObject[logic.questionNumber].questionVideo);
-            $("#videoTagHtml").get(0).load();
-            $("#videoTagHtml").get(0);
-            $("#questionText").html(questionsObject[logic.questionNumber].questionText);
-            // for (i=0; i < questionsObject[this.questionNumber].questionAnswers.length; i++)    
-            $("#questionAnswerOption1").html(questionsObject[logic.questionNumber].questionAnswers[0]);
-            $("#questionAnswerOption2").html(questionsObject[logic.questionNumber].questionAnswers[1]);
-            $("#questionAnswerOption3").html(questionsObject[logic.questionNumber].questionAnswers[2]);
-            $("#questionAnswerOption4").html(questionsObject[logic.questionNumber].questionAnswers[3]);
-            logic.checkAnswer();
-            return;
-        }
+                $("#videoSrcHtml").attr("src", questionsObject[logic.questionNumber].questionVideo);
+                $("#videoTagHtml").get(0).load();
+                $("#videoTagHtml").get(0);
+                $("#questionText").html(questionsObject[logic.questionNumber].questionText);
+                $("#questionAnswerOption1").html(questionsObject[logic.questionNumber].questionAnswers[0]);
+                $("#questionAnswerOption2").html(questionsObject[logic.questionNumber].questionAnswers[1]);
+                $("#questionAnswerOption3").html(questionsObject[logic.questionNumber].questionAnswers[2]);
+                $("#questionAnswerOption4").html(questionsObject[logic.questionNumber].questionAnswers[3]);
+                logic.checkAnswer();
+                return;
+            }
         },
 
         startGame: function () {
@@ -127,28 +108,30 @@ window.onload = function () {
         },
 
         timesUp: function () {
-            // logic.wrongAnswers++;
-            // $("#wrongAnswerNum").html(logic.wrongAnswers);
+            
             clearInterval(x)
-            setInterval(function(){
+            setInterval(function () {
                 $("#questionText").html("Times up! Next question loading...")
                 logic.loadQuestion()
 
             }, 5000);
-            
+
             return;
         },
 
         checkAnswer: function () {
-
+            // this is my problem function I believe, it seems to call both correct and wrong answer functions regardless of the changes I make.  
+            
             console.log(logic.questionNumber + "checkan1");
-            clearInterval(x);
+
             function qB1Func() {
-                if (questionsObject[logic.questionNumber].questionAnswers[0] === questionsObject[logic.questionNumber].correctAnswer) {
+                var userAnswer = questionsObject[logic.questionNumber].questionAnswers[0];
+
+                if (userAnswer === questionsObject[logic.questionNumber].correctAnswer) {
                     logic.correctAnswerFunc();
                     console.log("qb1c");
                     return;
-                } else if (questionsObject[logic.questionNumber].questionAnswers[0] != questionsObject[logic.questionNumber].correctAnswer) {
+                } else {
                     logic.wrongAnswerFunc();
                     console.log("qb1w");
                     return;
@@ -192,43 +175,11 @@ window.onload = function () {
             };
 
             document.getElementById("questionAnswerOption1").addEventListener("click", qB1Func);
-            document.getElementById("questionAnswerOption2").addEventListener("click", qB2Func);    
+            document.getElementById("questionAnswerOption2").addEventListener("click", qB2Func);
             document.getElementById("questionAnswerOption3").addEventListener("click", qB3Func);
             document.getElementById("questionAnswerOption4").addEventListener("click", qB4Func);
-
-            // $("#questionAnswerOption1").on("click", function () {
-            //     console.log(logic.questionNumber);
-                // if (questionsObject[logic.questionNumber].questionAnswers[0] === questionsObject[logic.questionNumber].correctAnswer) {
-                //     logic.correctAnswerFunc();
-                // } else if (questionsObject[logic.questionNumber].questionAnswers[0] != questionsObject[logic.questionNumber].correctAnswer) {
-                //     logic.wrongAnswerFunc();
-                // }
-            //     alert("q1 called")
-            // });
-            // $("#questionAnswerOption2").on("click", function () {
-            //     if (questionsObject[logic.questionNumber].questionAnswers[1] === questionsObject[logic.questionNumber].correctAnswer) {
-            //         logic.correctAnswerFunc();
-            //     } else if (questionsObject[logic.questionNumber].questionAnswers[1] != questionsObject[logic.questionNumber].correctAnswer) {
-            //         logic.wrongAnswerFunc();
-            //     }
-            //     alert("q2 called")
-            // });
-            // $("#questionAnswerOption3").on("click", function () {
-            //     if (questionsObject[logic.questionNumber].questionAnswers[2] === questionsObject[logic.questionNumber].correctAnswer) {
-            //         logic.correctAnswerFunc();
-            //     } else if (questionsObject[logic.questionNumber].questionAnswers[2] != questionsObject[logic.questionNumber].correctAnswer) {
-            //         logic.wrongAnswerFunc();
-            //     }
-            //     alert("q3 called")
-            // });
-            // $("#questionAnswerOption4").on("click", function () {
-            //     if (questionsObject[logic.questionNumber].questionAnswers[3] === questionsObject[logic.questionNumber].correctAnswer) {
-            //         logic.correctAnswerFunc();
-            //     } else if (questionsObject[logic.questionNumber].questionAnswers[3] != questionsObject[logic.questionNumber].correctAnswer) {
-            //         logic.wrongAnswerFunc();
-            //     }
-            //     alert("q4 called")
-            // });
+            
+            
         },
 
         endGame: function () {
@@ -247,7 +198,7 @@ window.onload = function () {
 
         afterAnswer: function () {
             logic.questionNumber++;
-            
+
             logic.loadQuestion();
             return;
         },
@@ -262,22 +213,14 @@ window.onload = function () {
             $("#questionText").html("<h2>" + "Correct! Watch the answer above while the next question loads." + "</h2>");
             $("#rightAnswerNum").html(logic.correctAnswers);
 
-            setTimeout(function(){
+            setTimeout(function () {
                 logic.afterAnswer();
                 return;
             }, 10 * 1000);
             return;
-            // logic.questionNumber++;
-            // console.log(logic.questionNumber + "c2");
-            // if (logic.questionNumber >= 9) {
-            //     logic.endGame();
-            // }
-            // $("#questionText").on("click", function () {
-            //     logic.afterAnswer();
-            // });
-
+            
         },
-       
+
         wrongAnswerFunc: function () {
             $("#videoSrcHtml").attr("src", questionsObject[logic.questionNumber].answerVideo);
             $("#videoTagHtml").get(0).load();
@@ -289,38 +232,18 @@ window.onload = function () {
             $("#questionText").html("Wrong! Watch the answer above while the next question loads.");
             $("#wrongAnswerNum").html(logic.wrongAnswers);
 
-            setTimeout(function(){
+            setTimeout(function () {
                 logic.afterAnswer();
                 return;
             }, 10 * 1000);
             return;
-            // logic.questionNumber++;
-            // console.log(logic.questionNumber + "w2");
-            // if (logic.questionNumber >= 9) {
-            //     logic.endGame();
-            // }  else {
-            //     logic.timer = 30;
-            //     clearInterval(x);
-            //     x = setInterval(function () {
-    
-            //         logic.timer--;
-            //         document.getElementById("timeLeft").innerHTML = logic.timer;
-            //         if (logic.timer <= 0) {
-            //             clearInterval(x);
-            //             logic.timesUp();
-            //         }
-    
-            //     }, 1000);
-            //     logic.afterAnswer();
             
+
         },
 
 
-
     };
-    // console.log(questionsObject[1].questionText);
-    // setInterval(logic.countdown(), 1000);
-
+    
     $(document).on("click", "#startButton", function () {
 
         logic.startGame();
