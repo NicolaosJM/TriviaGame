@@ -68,7 +68,7 @@ window.onload = function () {
 
         timer: 30,
 
-        timer1: function () {
+        timer1: function(){
             clearInterval(x);
             x = setInterval(function () {
 
@@ -83,7 +83,6 @@ window.onload = function () {
         },
 
         loadQuestion: function () {
-            
             logic.timer = 30;
             logic.timer1();
             if (logic.questionNumber >= 9) {
@@ -107,69 +106,58 @@ window.onload = function () {
 
 
             document.getElementById("startButton").style.visibility = "hidden";
-            logic.questionNumber = 0;
-            logic.correctAnswers = 0;
-            logic.wrongAnswers = 0;
+            logic.questionNumber= 0;
+            logic.correctAnswers= 0;
+            logic.wrongAnswers= 0;
             logic.loadQuestion();
         },
 
         timesUp: function () {
 
             clearInterval(x)
-            logic.wrongAnswers++;
-            $("#wrongAnswerNum").html(logic.wrongAnswers);
-            $("#questionText").html("Times up! Next question loading...");
-            var timesUpInt = setInterval(function () {
-                logic.questionNumber++;
+            setInterval(function () {
+                $("#questionText").html("Times up! Next question loading...")
                 logic.loadQuestion()
-                clearInterval(timesUpInt);
+
             }, 5000);
-            
+
             return;
         },
         wrongAnswerFunc: function () {
-            if (questionsObject[logic.questionNumber].answerVideo >= 9) {
-                logic.endGame();
+            $("#videoSrcHtml").attr("src", questionsObject[logic.questionNumber].answerVideo);
+            $("#videoTagHtml").get(0).load();
+            $("#videoTagHtml").get(0);
+            clearInterval(x);
+            console.log(logic.questionNumber + "w1");
+            logic.wrongAnswers++;
+
+            $("#questionText").html("Wrong! Watch the answer above while the next question loads.");
+            $("#wrongAnswerNum").html(logic.wrongAnswers);
+
+            setTimeout(function () {
+                logic.afterAnswer();
                 return;
-            } else {
-                $("#videoSrcHtml").attr("src", questionsObject[logic.questionNumber].answerVideo);
-                $("#videoTagHtml").get(0).load();
-                $("#videoTagHtml").get(0);
-                clearInterval(x);
-                console.log(logic.questionNumber + "w1");
-                logic.wrongAnswers++;
+            }, 10 * 1000);
+            return;
 
-                $("#questionText").html("Wrong! Watch the answer above while the next question loads.");
-                $("#wrongAnswerNum").html(logic.wrongAnswers);
 
-                setTimeout(function () {
-                    logic.afterAnswer();
-                    return;
-                }, 10 * 1000);
-                return;
-
-            }
         },
         correctAnswerFunc: function () {
-            if (questionsObject[logic.questionNumber].answerVideo >= 9) {
-                logic.endGame();
-                return;
-            } else {
-                $("#videoSrcHtml").attr("src", questionsObject[logic.questionNumber].answerVideo);
-                $("#videoTagHtml").get(0).load();
-                $("#videoTagHtml").get(0);
-                clearInterval(x);
-                console.log(logic.questionNumber + "c1");
-                logic.correctAnswers++;
-                $("#questionText").html("<h2>" + "Correct! Watch the answer above while the next question loads." + "</h2>");
-                $("#rightAnswerNum").html(logic.correctAnswers);
+            $("#videoSrcHtml").attr("src", questionsObject[logic.questionNumber].answerVideo);
+            $("#videoTagHtml").get(0).load();
+            $("#videoTagHtml").get(0);
+            clearInterval(x);
+            console.log(logic.questionNumber + "c1");
+            logic.correctAnswers++;
+            $("#questionText").html("<h2>" + "Correct! Watch the answer above while the next question loads." + "</h2>");
+            $("#rightAnswerNum").html(logic.correctAnswers);
 
-                setTimeout(function () {
-                    logic.afterAnswer();
-                    return;
-                }, 10 * 1000);
+            setTimeout(function () {
+                logic.afterAnswer();
                 return;
-            }
+            }, 10 * 1000);
+            return;
+
         },
         checkAnswer: function () {
             // this is my problem function I believe, it seems to call both correct and wrong answer functions regardless of the changes I make.  
@@ -230,9 +218,9 @@ window.onload = function () {
             return;
         },
 
+        
 
-
-
+        
 
 
     };
