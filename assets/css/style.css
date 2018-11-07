@@ -1,3 +1,6 @@
+* {
+    font-family: 'Belleza', sans-serif;
+}
 body {
     background-image: url("../images/plaid.png");
     /* background-size: 45%; */
@@ -10,7 +13,7 @@ body {
     padding-top: 30px;
     padding-bottom:30px;
     margin-bottom: 40px;
-    font-family: 'Courier New', Courier, monospace;
+    
     
 }
 
@@ -26,6 +29,5 @@ body {
     background-color: #eeeeee;
     
 }
-
 
 

@@ -108,9 +108,11 @@ window.onload = function () {
 
             document.getElementById("startButton").style.visibility = "hidden";
             logic.questionNumber = 0;
-
+            
             logic.correctAnswers = 0;
+            $("#rightAnswerNum").html(logic.correctAnswers);
             logic.wrongAnswers = 0;
+            $("#wrongAnswerNum").html(logic.wrongAnswers);
             logic.loadQuestion();
         },
 
@@ -129,7 +131,7 @@ window.onload = function () {
             return;
         },
         wrongAnswerFunc: function () {
-            if (questionsObject[logic.questionNumber].answerVideo > 8) {
+            if ((logic.wrongAnswers + logic.correctAnswers) >= 8) {
                 logic.endGame();
                 return;
             } else {
@@ -151,8 +153,9 @@ window.onload = function () {
 
             }
         },
+        
         correctAnswerFunc: function () {
-            if (questionsObject[logic.questionNumber].answerVideo > 8) {
+            if ((logic.wrongAnswers + logic.correctAnswers) >= 8) {
                 logic.endGame();
                 return;
             } else {
@@ -173,7 +176,7 @@ window.onload = function () {
             }
         },
         checkAnswer: function () {
-            // this is my problem function I believe, it seems to call both correct and wrong answer functions regardless of the changes I make.  
+             
 
             $("#questionAnswerOption1").unbind().click(function () {
                 if (questionsObject[logic.questionNumber].correctAnswer === questionsObject[logic.questionNumber].questionAnswers[0]) {
@@ -203,14 +206,11 @@ window.onload = function () {
                     logic.wrongAnswerFunc();
                 }
             });
-            // $("#questionAnswerOption4").off("click").click();
-            // $("#questionAnswerOption3").off();
-            // $("#questionAnswerOption2").off();
-            // $("#questionAnswerOption1").off();
-            // $("#myButton").off("click").click(myHandler);
+            
         },
 
         endGame: function () {
+            clearInterval(x);
             $("#questionText").html("Thanks For Playing!");
             $("#questionAnswerOption1").html("A");
             $("#questionAnswerOption2").html("B");
@@ -237,9 +237,9 @@ window.onload = function () {
 
 
     };
-
+    document.getElementById("questionText").style.visibility = "hidden";
     $(document).on("click", "#startButton", function () {
-
+        document.getElementById("questionText").style.visibility = "visible";
         logic.startGame();
     });
 };
