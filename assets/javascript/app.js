@@ -108,6 +108,7 @@ window.onload = function () {
 
             document.getElementById("startButton").style.visibility = "hidden";
             logic.questionNumber = 0;
+
             logic.correctAnswers = 0;
             logic.wrongAnswers = 0;
             logic.loadQuestion();
@@ -128,7 +129,7 @@ window.onload = function () {
             return;
         },
         wrongAnswerFunc: function () {
-            if (questionsObject[logic.questionNumber].answerVideo >= 9) {
+            if (questionsObject[logic.questionNumber].answerVideo > 8) {
                 logic.endGame();
                 return;
             } else {
@@ -151,7 +152,7 @@ window.onload = function () {
             }
         },
         correctAnswerFunc: function () {
-            if (questionsObject[logic.questionNumber].answerVideo >= 9) {
+            if (questionsObject[logic.questionNumber].answerVideo > 8) {
                 logic.endGame();
                 return;
             } else {
